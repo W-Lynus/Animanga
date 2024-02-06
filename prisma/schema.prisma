@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Collection{
+  id          Int @id @default(autoincrement())
+  mal_id      String
+  user_email  String
+  anime_title String?
+  anime_image String?
+
+  @@unique([user_email, mal_id])
+} 
+
+model Comments{
+  id          Int @id @default(autoincrement())
+  mal_id      String
+  anime_title String
+  user_email  String
+  user_name   String
+  comment     String
+}
