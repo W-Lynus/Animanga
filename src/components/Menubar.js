@@ -5,7 +5,7 @@ import SearchField from "./SearchField";
 const Menubar = () => {
   return (
     <div className="flex md:flex-row flex-col justify-between md:items-center px-6 py-3 gap-2 shadow-xl">
-      <div className="flex gap-10 text-main-primary">
+      <div className="flex py-2 gap-10 text-main-primary">
         <Link
           href="/anime"
           className="font-bold uppercase hover:text-main-accent"

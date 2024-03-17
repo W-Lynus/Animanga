@@ -42,7 +42,8 @@ const CommentField = ({ username, email, anime, title }) => {
         onChange={handleInput}
       />
       <button
-        className="rounded-md bg-main-accent px-8 py-2 self-end font-semibold shadow-sm"
+        className="rounded-md bg-main-accent disabled:opacity-50 px-8 py-2 self-end font-semibold shadow-sm"
+        disabled={comment.length < 3}
         onClick={handlePosting}
       >
         Posting Komentar

@@ -7,7 +7,7 @@ const Navbar = async () => {
 
   return (
     <header className="bg-main-accent w-full">
-      <div className="flex md:flex-row flex-col justify-between md:items-center px-6 py-4 gap-2 shadow-xl">
+      <div className="flex justify-between items-center px-6 py-4 gap-2 shadow-xl">
         <Link href="/" className="font-bold text-xl uppercase">
           Animanga List
         </Link>
@@ -27,7 +27,7 @@ const Navbar = async () => {
           )}
           <Link
             href={`/api/auth/${user ? "signout" : "signin"}`}
-            className="bg-main-dark text-main-accent px-12 py-1"
+            className="bg-main-dark text-main-accent text-center sm:px-12 px-8 py-1"
           >
             {user ? "Sign Out" : "Sign In"}
           </Link>

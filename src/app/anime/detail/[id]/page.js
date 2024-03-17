@@ -111,8 +111,8 @@ const Page = async ({ params: { id } }) => {
             {detailAnime.background}
           </p>
           <div>
-            <h3 className="text-main-primary">Komentar Penonton</h3>
-            <CommentSection anime_mal_id={id} />
+            <h3 className="text-main-primary">Komentar</h3>
+            <CommentSection id={id} />
             {user && (
               <CommentField
                 username={user?.name}

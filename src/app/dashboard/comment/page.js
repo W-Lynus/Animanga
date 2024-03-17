@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { authServerSession } from "libs/auth-libs";
-import HeaderList from "components/HeaderList";
 import prisma from "libs/prisma";
+import HeaderBar from "components/HeaderBar";
 
 const page = async () => {
   const user = await authServerSession();
@@ -12,20 +12,26 @@ const page = async () => {
 
   return (
     <section className="mt-4 px-4 w-full">
-      <HeaderList title={"My Comment"} />
+      <HeaderBar title={"My Comments"} />
       <div className="grid grid-cols-1 py-4 gap-4">
-        {comments.map((comment) => {
-          return (
-            <Link
-              href={`/anime/${comment.mal_id}`}
-              key={comment.id}
-              className="bg-color-primary text-color-dark p-4"
-            >
-              <p className="text-sm">{comment.anime_title}</p>
-              <p className="italic">{comment.comment}</p>
-            </Link>
-          );
-        })}
+        {comments.length ? (
+          comments.map((comment) => {
+            return (
+              <Link
+                href={`/anime/detail/${comment.mal_id}`}
+                key={comment.id}
+                className="bg-main-primary text-main-dark p-4"
+              >
+                <p className="text-sm">{comment.anime_title}</p>
+                <p className="italic">{comment.comment}</p>
+              </Link>
+            );
+          })
+        ) : (
+          <span className="text-main-primary text-center my-8">
+            Tidak Ada Komentar
+          </span>
+        )}
       </div>
     </section>
   );
