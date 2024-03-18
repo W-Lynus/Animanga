@@ -3,8 +3,8 @@ import HeaderList from "components/HeaderList";
 import { getAnimeResponse, randomize } from "libs/api-libs";
 
 const Page = async () => {
-  const recommendationAnime = await getAnimeResponse("recommendations/manga");
-  const mapRecommendation = recommendationAnime.data.flatMap(
+  const recommendationManga = await getAnimeResponse("recommendations/manga");
+  const mapRecommendation = recommendationManga.data.flatMap(
     (item) => item.entry
   );
   const randRecommendation = randomize(mapRecommendation, 5);
