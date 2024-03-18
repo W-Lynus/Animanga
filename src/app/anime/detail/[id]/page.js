@@ -10,8 +10,8 @@ const Page = async ({ params: { id } }) => {
   const user = await authServerSession();
   const { data: detailAnime } = await getAnimeResponse(`anime/${id}`);
 
-  const renderArray = (type) =>
-    detailAnime &&
+  const renderArray = async (type) =>
+    (await detailAnime) &&
     detailAnime[type] &&
     detailAnime[type].map((genre, idx) => {
       return (
