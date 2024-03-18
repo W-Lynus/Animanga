@@ -4,7 +4,7 @@ import { getAnimeResponse, randomize } from "libs/api-libs";
 
 const Page = async () => {
   const recommendationManga = await getAnimeResponse("recommendations/manga");
-  const mapRecommendation = recommendationManga.data.flatMap(
+  const mapRecommendation = recommendationManga.data?.flatMap(
     (item) => item.entry
   );
   const randRecommendation = randomize(mapRecommendation, 5);
