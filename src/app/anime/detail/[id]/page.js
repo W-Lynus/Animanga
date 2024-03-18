@@ -15,7 +15,7 @@ const Page = async ({ params: { id } }) => {
       return (
         <span key={idx}>
           {genre.name || genre}
-          {detailAnime[type].length - idx > 1 ? ", " : " "}
+          {detailAnime[type]?.length - idx > 1 ? ", " : " "}
         </span>
       );
     });
