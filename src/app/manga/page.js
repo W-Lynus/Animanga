@@ -4,15 +4,15 @@ import { getAnimeResponse, randomize } from "libs/api-libs";
 
 const Page = async () => {
   const recommendationManga = await getAnimeResponse("recommendations/manga");
-  const mapRecommendation = await recommendationManga.data?.flatMap(
-    (item) => item.entry
-  );
+  const mapRecommendation =
+    (recommendationManga &&
+      recommendationManga.data &&
+      recommendationManga.data.flatMap((item) => item.entry)) ||
+    [];
   const randRecommendation = await randomize(mapRecommendation, 5);
-  const someTopAnime = await getAnimeResponse("top/manga", `limit=10`);
-  const someFavoriteAnime = await getAnimeResponse(
-    "top/manga",
-    `filter=favorite&limit=5`
-  );
+  const someTopManga = (await getAnimeResponse("top/manga", `limit=10`)) || [];
+  const someFavoriteManga =
+    (await getAnimeResponse("top/manga", `filter=favorite&limit=5`)) || [];
 
   return (
     <div className="flex flex-col gap-4 py-4">
@@ -26,7 +26,7 @@ const Page = async () => {
           link="/manga/popular"
           linkTitle="Lihat Semua"
         />
-        <CardList list={someTopAnime.data} type="manga" />
+        <CardList list={someTopManga.data} type="manga" />
       </section>
       <section>
         <HeaderList
@@ -34,7 +34,7 @@ const Page = async () => {
           link="/manga/popular/favorite"
           linkTitle="Lihat Semua"
         />
-        <CardList list={someFavoriteAnime.data} type="manga" />
+        <CardList list={someFavoriteManga.data} type="manga" />
       </section>
     </div>
   );
