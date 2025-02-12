@@ -9,5 +9,5 @@ export const randomize = (data, gap) => {
   const firstNum = ~~(Math.random() * (data.length - gap) + 1);
   const secondNum = firstNum + gap;
 
-  return data.slice(firstNum, secondNum);
+  return [...new Set(data.slice(firstNum, secondNum))];
 };

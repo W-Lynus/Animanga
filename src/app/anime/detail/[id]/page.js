@@ -119,6 +119,7 @@ const Page = async ({ params: { id } }) => {
               <CommentField
                 username={user?.name}
                 email={user?.email}
+                photo={user?.image}
                 anime={id}
                 title={detailAnime.title}
               />

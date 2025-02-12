@@ -5,23 +5,18 @@ import { getAnimeResponse, randomize } from "libs/api-libs";
 const Page = async () => {
   const recommendationAnime = await getAnimeResponse("recommendations/anime");
   const mapRecommendation =
-    recommendationAnime &&
-    recommendationAnime.data &&
-    recommendationAnime.data.flatMap((item) => item.entry);
-  const randRecommendation = await randomize(mapRecommendation, 5);
-  const someTopAnime = await getAnimeResponse("top/anime", `limit=10`);
-  const someFavoriteAnime = await getAnimeResponse(
-    "top/anime",
-    `filter=favorite&limit=5`
-  );
-  const someAiringAnime = await getAnimeResponse(
-    "top/anime",
-    `filter=airing&limit=5`
-  );
-  const someUpcomingAnime = await getAnimeResponse(
-    "top/anime",
-    `filter=upcoming&limit=5`
-  );
+    (recommendationAnime &&
+      recommendationAnime.data &&
+      recommendationAnime.data.flatMap((item) => item.entry)) ||
+    [];
+  const randRecommendation = randomize(mapRecommendation, 5) || [];
+  const someTopAnime = (await getAnimeResponse("top/anime", `limit=10`)) || [];
+  const someFavoriteAnime =
+    (await getAnimeResponse("top/anime", `filter=favorite&limit=5`)) || [];
+  const someAiringAnime =
+    (await getAnimeResponse("top/anime", `filter=airing&limit=5`)) || [];
+  const someUpcomingAnime =
+    (await getAnimeResponse("top/anime", `filter=upcoming&limit=5`)) || [];
 
   return (
     <div className="flex flex-col gap-4 py-4">

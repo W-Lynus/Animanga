@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const CommentField = ({ username, email, anime, title }) => {
+const CommentField = ({ username, email, photo, anime, title }) => {
   const [comment, setComment] = useState("");
 
   const router = useRouter();
@@ -15,7 +15,7 @@ const CommentField = ({ username, email, anime, title }) => {
   const handlePosting = async (event) => {
     event.preventDefault();
 
-    const data = { username, email, anime, title, comment };
+    const data = { username, email, anime, title, comment, photo };
 
     const response = await fetch("/api/v1/comment", {
       method: "POST",

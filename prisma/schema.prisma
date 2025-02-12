@@ -25,6 +25,7 @@ model Comments{
   mal_id      String
   anime_title String
   user_email  String
+  user_photo  String
   user_name   String
   comment     String
 }

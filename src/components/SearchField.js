@@ -13,7 +13,12 @@ const SearchField = () => {
     if (!searchValue.trim()) return;
     if (event.key === "enter" || event.type === "click") {
       event.preventDefault();
-      router.push(`${pathname}/search/${searchValue}`);
+      if (!pathname.includes("search")) {
+        router.push(`${pathname}/search/${searchValue}`);
+      } else {
+        router.push(`${searchValue}`);
+      }
+      searchRef.current.value = "";
     }
   };
 

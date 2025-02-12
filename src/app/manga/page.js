@@ -9,7 +9,7 @@ const Page = async () => {
       recommendationManga.data &&
       recommendationManga.data.flatMap((item) => item.entry)) ||
     [];
-  const randRecommendation = await randomize(mapRecommendation, 5);
+  const randRecommendation = randomize(mapRecommendation, 5) || [];
   const someTopManga = (await getAnimeResponse("top/manga", `limit=10`)) || [];
   const someFavoriteManga =
     (await getAnimeResponse("top/manga", `filter=favorite&limit=5`)) || [];
