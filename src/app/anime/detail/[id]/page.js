@@ -6,7 +6,13 @@ import { authServerSession } from "libs/auth-libs";
 import CommentField from "components/CommentField";
 import CommentSection from "components/CommentSection";
 
-const Page = async ({ params: { id } }) => {
+const Page = async props => {
+  const params = await props.params;
+
+  const {
+    id
+  } = params;
+
   const user = await authServerSession();
   const { data: detailAnime } = await getAnimeResponse(`anime/${id}`);
 

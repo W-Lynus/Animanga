@@ -2,7 +2,8 @@ import CardList from "components/CardList";
 import HeaderList from "components/HeaderList";
 import { getAnimeResponse } from "libs/api-libs";
 
-const Page = async ({ params }) => {
+const Page = async props => {
+  const params = await props.params;
   const { keyword } = params;
   const decodeKeyword = decodeURI(keyword);
   const findAnime = await getAnimeResponse("manga", `q=${decodeKeyword}`);

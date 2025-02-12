@@ -4,9 +4,10 @@ import { getAnimeResponse } from "libs/api-libs";
 import CardList from "components/CardList";
 import HeaderList from "components/HeaderList";
 import Pagination from "components/Pagination";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 
-const Page = ({ params }) => {
+const Page = props => {
+  const params = use(props.params);
   const { filter } = params;
 
   const [page, setPage] = useState(1);

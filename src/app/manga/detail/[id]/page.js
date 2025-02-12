@@ -2,7 +2,8 @@ import { getAnimeResponse } from "libs/api-libs";
 import VideoPlayer from "components/VideoPlayer";
 import Image from "next/image";
 
-const Page = async ({ params }) => {
+const Page = async props => {
+  const params = await props.params;
   const { id } = params;
 
   const { data: detailAnime } = await getAnimeResponse(`manga/${id}`);
